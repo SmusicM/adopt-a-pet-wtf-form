@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Pets List{%endblock%}
+
+{% block content %}
+<h1>pets list</h1>
+    <div class="container">
+        {%for pet in pets%}
+        <div class="each-pet-container">
+           <ul>
+
+            <li><a class="pet-name" href="/{{pet.id}}">{{pet.name}}</a></li>
+
+            {% if pet.photo_url %}
+            <li><img src="{{pet.photo_url}}" alt=""></li>
+            {%endif%}
+
+            {% if pet.available%}
+            <li class="available"><span class="pet-available">{{pet.name}}</span> is available!</li>
+            {%else%}
+            <li class="available"><span class="pet-unavailable">{{pet.name}}</span> is unavailable</li>
+            {%endif%}
+
+
+           </ul>
+        </div>
+        {%endfor%}
+    </div>
+    <form action="/add"><button class="add-pet">Add Pet</button></form>
+
+{% endblock %}
+    

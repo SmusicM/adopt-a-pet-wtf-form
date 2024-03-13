@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}edit pet{%endblock%}
+
+{% block content %}
+<h1>edit  pet</h1>
+    
+<div class="">
+    <ul>
+
+     <li><a href="/{{pet.id}}">{{pet.name}}</a></li>
+
+     <li>Species: {{pet.species}}</li>
+
+     {% if pet.photo_url %}
+     <li><img src="{{pet.photo_url}}" alt=""></li>
+     {%endif%}
+
+     {% if pet.available%}
+     <li class="available"><span class="pet-available">{{pet.name}}</span> is available!</li>
+     {%else%}
+     <li class="available"><span class="pet-unavailable">{{pet.name}}</span> is unavailable</li>
+     {%endif%}
+
+     {% if pet.age%}
+     <li  class="">Age: {{pet.age}}</li>
+     {%endif%}
+
+    <li>{{pet.notes}}</li>
+    </ul>
+ </div>
+
+
+ <form action="/{{pet.id}}"method="POST">
+  
+        {{form.hidden_tag()}}
+
+     <div class="edit-fields-container">
+        <!--form only works when including these name and species field in the form, i want it to be where it keeps the data and edits fields i manually keep in-->
+        <div class="hidden">
+            {{form.name}}
+          
+        </div>
+        <div class="hidden">
+            {{form.species}}
+            
+        </div>
+        <div>
+            {{form.photo_url.label}}
+            {{form.photo_url}}
+        </div>
+        <div>
+            {{form.notes.label}}
+            {{form.notes}}
+        </div>
+        <div>
+            {{form.available.label}}
+            {{form.available}}
+        </div>
+    </div>
+    <div>
+        {% for field in form %}
+        {% for err in field.errors%}
+        <p>
+            {{field.label}} : {{err}}
+        </p>
+        {%endfor%}
+        {%endfor%}
+    </div>
+    <button>Submit</button>
+</form>
+   
+    <!--<form action=""method="POST">
+        {{form.hidden_tag()}}
+        {% for field in form
+            if field.widget.input_type != 'hidden' %}
+            <p>
+                {{field.label}}
+                {{field}}
+
+                {% for err in field.errors %}
+                  {{err}}
+                {% endfor %}
+            </p>
+        {% endfor %}
+        <button>Submit</button>
+    </form>-->
+{% endblock %}
+    

@@ -1,0 +1,38 @@
+img{
+    width: 100px;
+    height: 100px;
+    border: 1px tan solid;
+    
+}
+
+.hidden{
+    display: none;
+}
+
+ul{
+    list-style: none;
+}
+
+.available{
+    font-weight: 600;
+}
+
+.pet-unavailable{
+    color: red;
+    font-weight: 600;
+}
+.pet-available{
+    color: rgb(17, 187, 17);
+    font-weight: 600;
+}
+.pet-name{
+    text-decoration: none;
+    color: darkslategrey;
+    font-weight: 800;
+    font-size: 35px;
+}
+
+.add-pet{
+    background-color: mediumspringgreen;
+    
+}
